@@ -12,4 +12,4 @@ Check out the live site here: [muazdev.vercel.app](https://muaz-portfolio-eight.
 * **Deployment:** Vercel
 
 ---
-Developed with ❤️ by **Muaz Al-Shmoti**
+Developed with ❤️ by **Muaz Alkahbour**
