@@ -97,6 +97,12 @@ const contactChannels = [
     cta: "تابعني الآن",
   },
   {
+    label: "GitHub",
+    href: "https://github.com/Muazalkhabour",
+    description: "اطلع على المستودعات والمشاريع البرمجية وطريقة عملي في بناء الواجهات والتجارب الحديثة.",
+    cta: "شاهد الحساب",
+  },
+  {
     label: "Facebook",
     href: "https://www.facebook.com/muaz.alkhabour",
     description: "للتواصل والمتابعة والاطلاع على حضوري المهني بشكل مباشر.",
@@ -438,9 +444,17 @@ export default function Home() {
             >
               تابعني على Instagram
             </a>
+            <a
+              href="https://github.com/Muazalkhabour"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full rounded-full border border-white/15 bg-white/5 px-6 py-3 text-center text-sm font-semibold text-white/85 backdrop-blur transition hover:border-amber-200/40 hover:text-amber-100 sm:w-auto"
+            >
+              شاهد GitHub
+            </a>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {contactChannels.map((channel) => (
               <a
                 key={channel.label}

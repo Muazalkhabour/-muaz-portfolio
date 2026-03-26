@@ -24,6 +24,10 @@ export const metadata: Metadata = {
   description: "موقع شخصي احترافي لمعاذ الشمطي مبني باستخدام Next.js وTailwind CSS وFramer Motion مع مشهد ثلاثي الأبعاد حقيقي.",
   applicationName: "MUAZ Portfolio",
   keywords: ["معاذ الشمطي", "مطور ويب", "Next.js", "Portfolio", "واجهة مستخدم", "Three.js"],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
   alternates: {
     canonical: "/",
   },
