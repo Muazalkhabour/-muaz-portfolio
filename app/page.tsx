@@ -256,10 +256,11 @@ export default function Home() {
               <span className="hidden text-white/25 sm:inline">/</span>
               <span className="whitespace-nowrap">DIGITAL MARKETER</span>
             </p>
-            <h1 className="max-w-3xl text-[1.78rem] font-semibold leading-[1.5] tracking-tight text-white sm:text-4xl sm:leading-[1.35] lg:text-5xl">
-              أنا <span className="text-amber-200">معاذ الشمطي</span>
-              <br />
-              أطوّر مواقع حديثة وأبني حضوراً رقمياً فعالاً.
+            <h1 className="flex max-w-3xl flex-col gap-2 text-[1.52rem] font-semibold leading-[1.4] tracking-tight text-white sm:gap-2 sm:text-[1.9rem] sm:leading-[1.4] lg:text-[2.65rem] lg:leading-[1.4]">
+              <span className="block whitespace-nowrap">
+                أنا <span className="text-amber-200">معاذ الشمطي</span> | <span className="text-amber-200">M</span>UAZ <span className="text-amber-200">T</span>ECH
+              </span>
+              <span className="block leading-[1.75] sm:leading-[1.72] lg:leading-[1.68]">أطور مواقع حديثة و أبني حضوراً رقمياً فعالاً.</span>
             </h1>
             <p className="max-w-2xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8 lg:text-xl">
               أجمع بين تطوير الويب والتسويق الرقمي لصناعة تجربة احترافية تساعد العلامات التجارية على الظهور، التفاعل، والنمو عبر الموقع ومنصات التواصل.
