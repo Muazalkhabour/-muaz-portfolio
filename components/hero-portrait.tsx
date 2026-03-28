@@ -82,12 +82,6 @@ export default function HeroPortrait({
           ? "absolute inset-0 bg-gradient-to-t from-[#050816]/98 via-[#050816]/30 to-transparent"
           : "absolute inset-0 bg-gradient-to-t from-[#050816]/96 via-[#050816]/28 to-transparent sm:from-[#050816]/90 sm:via-[#050816]/20"} />
 
-        {!isIntegrated && (
-          <div className="absolute right-3 top-3 hidden rounded-full border border-amber-100/14 bg-slate-950/58 px-3 py-1.5 font-mono text-[9px] tracking-[0.18em] text-amber-50/90 shadow-[0_10px_30px_rgba(2,6,23,0.42)] backdrop-blur-xl sm:right-5 sm:top-5 sm:block sm:px-4 sm:py-2 sm:text-[10px] sm:tracking-[0.28em]">
-            SIGNATURE PORTRAIT
-          </div>
-        )}
-
       </motion.div>
     </div>
   );
