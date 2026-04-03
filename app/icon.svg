@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="iconTitle">
-  <title id="iconTitle">MZ site icon</title>
+  <title id="iconTitle">Code site icon</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#07111f" />
@@ -12,6 +12,9 @@
   </defs>
   <rect width="256" height="256" rx="64" fill="url(#bg)" />
   <rect x="14" y="14" width="228" height="228" rx="50" fill="none" stroke="rgba(255,255,255,0.12)" />
-  <path d="M58 186V70h20l50 68 50-68h20v116h-22V108l-44 58h-8l-44-58v78H58Z" fill="url(#accent)" />
-  <path d="M164 82h38v12l-50 80h50v12h-68v-12l50-80h-50V82Z" fill="#f8fafc" />
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="18">
+    <path d="M96 86 54 128l42 42" stroke="url(#accent)" />
+    <path d="m160 86 42 42-42 42" stroke="#f8fafc" />
+    <path d="M144 70 112 186" stroke="url(#accent)" />
+  </g>
 </svg>

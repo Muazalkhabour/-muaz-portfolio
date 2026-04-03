@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import BrandMark from "@/components/brand-mark";
 import HeroPortrait from "@/components/hero-portrait";
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+
 const HeroScene = dynamic(() => import("@/components/hero-scene"), {
   ssr: false,
   loading: () => (
@@ -28,7 +30,65 @@ function HeroSceneFallback({ className = "" }: { className?: string }) {
   );
 }
 
-const stack = ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js", "Prisma", "React", "Node.js", "PostgreSQL"];
+function TechGroupIcon({ type }: { type: "frontend" | "motion" | "data" }) {
+  if (type === "frontend") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2.5" />
+        <path d="M8 10l-2 2 2 2" />
+        <path d="m16 10 2 2-2 2" />
+        <path d="m13 9-2 6" />
+      </svg>
+    );
+  }
+
+  if (type === "motion") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 15c2.5-5 5.5-8 9-8 2.5 0 4.8 1.4 7 4" />
+        <path d="M4 19c2.5-3.5 5.5-5.2 9-5.2 2.4 0 4.8.8 7 2.7" />
+        <path d="M14 7h4v4" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <ellipse cx="12" cy="6" rx="7" ry="3" />
+      <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" />
+      <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+    </svg>
+  );
+}
+
+const techGroups = [
+  {
+    title: "Frontend Foundations",
+    label: "Core UI",
+    description: "أستخدم هذه التقنيات لبناء واجهات حديثة، سريعة، ومنظمة تمنح المستخدم تجربة واضحة وقابلة للتوسع.",
+    items: ["Next.js", "React", "TypeScript"],
+    accentClass: "from-amber-200/14 via-orange-300/8 to-transparent",
+    icon: "frontend" as const,
+  },
+  {
+    title: "Motion & Experience",
+    label: "Visual Depth",
+    description: "أضيف الحركة المدروسة والمشاهد التفاعلية عندما تكون جزءًا من التجربة لا مجرد تأثير بصري زائد.",
+    items: ["Framer Motion", "Three.js", "Tailwind CSS"],
+    accentClass: "from-cyan-300/16 via-sky-300/8 to-transparent",
+    icon: "motion" as const,
+  },
+  {
+    title: "Data & Systems",
+    label: "Logic Layer",
+    description: "أبني طبقات منطق وبيانات تساعد على إدارة المنتجات والخدمات بشكل أوضح وأكثر اعتمادية على المدى الطويل.",
+    items: ["Node.js", "Prisma", "PostgreSQL"],
+    accentClass: "from-emerald-300/16 via-teal-300/8 to-transparent",
+    icon: "data" as const,
+  },
+];
+
+const workflowPrinciples = ["Performance-first", "Scalable Structure", "Conversion-aware UI", "Responsive by default"];
 
 const highlights = [
   ["تطوير وتجربة احترافية", "أبني واجهات حديثة تجمع بين الجمال، السرعة، والهيكلة القابلة للتوسع."],
@@ -39,46 +99,97 @@ const highlights = [
 const services = [
   {
     title: "تطوير مواقع احترافية",
-    description: "مواقع شخصية وتجارية وصفحات هبوط حديثة بهوية واضحة وأداء سريع وتجربة استخدام متقنة.",
+    description: "تطوير مواقع شخصية وتجارية وصفحات هبوط حديثة بهوية واضحة، أداء سريع، وتجربة استخدام تدعم الظهور والثقة.",
   },
   {
     title: "تسويق رقمي عبر المنصات",
-    description: "فهم عملي لإدارة الحضور الرقمي وصناعة محتوى ورسائل مناسبة للمنصات الاجتماعية المختلفة.",
+    description: "فهم عملي لإدارة الحضور الرقمي وصناعة رسائل ومحتوى مناسب للمنصات الاجتماعية بما يخدم الوصول والتفاعل.",
   },
   {
     title: "صفحات هبوط مهيّأة للتحويل",
-    description: "تصميم صفحات تساعد على جذب الانتباه، توضيح القيمة، ودفع الزائر إلى التفاعل أو التواصل.",
+    description: "تصميم صفحات هبوط تساعد على جذب الانتباه، توضيح القيمة، وتحويل الزيارة إلى تفاعل أو تواصل مباشر.",
   },
   {
     title: "بناء حضور رقمي متكامل",
-    description: "ربط الموقع مع هوية النشاط التجاري والتواصل الاجتماعي ليظهر المشروع بصورة أقوى وأكثر احترافية.",
+    description: "ربط الموقع مع هوية النشاط التجاري والمنصات الاجتماعية لبناء حضور رقمي أكثر اتساقًا واحترافية.",
   },
 ];
 
-const platforms = ["Instagram", "Facebook", "TikTok", "Snapchat", "LinkedIn", "YouTube", "Google Ads", "Meta Ads"];
+const platformGroups = [
+  {
+    label: "Social Reach",
+    title: "Instagram / Facebook / TikTok / Snapchat",
+    description: "للوصول السريع، الهوية البصرية، وبناء التفاعل.",
+    accentClass: "from-amber-200/14 via-orange-300/8 to-transparent",
+  },
+  {
+    label: "Professional Presence",
+    title: "LinkedIn / YouTube",
+    description: "للحضور المهني والمحتوى الأعمق.",
+    accentClass: "from-cyan-300/14 via-sky-300/8 to-transparent",
+  },
+  {
+    label: "Paid Growth",
+    title: "Google Ads / Meta Ads",
+    description: "للتوسّع المدفوع وتحسين الوصول والاستهداف.",
+    accentClass: "from-emerald-300/14 via-teal-300/8 to-transparent",
+  },
+];
 
 const credential = {
-  title: "شهادة من Medipol University",
+  title: "خلفية أكاديمية من Medipol University",
   description:
-    "أمتلك شهادة من Medipol University تعزز الجانب الأكاديمي في مسيرتي وتدعم عملي بخلفية معرفية إلى جانب الخبرة العملية في التطوير والتسويق الرقمي.",
-  badge: "Academic Credibility",
+    "إلى جانب الخبرة العملية، تمنحني هذه الخلفية الأكاديمية أساسًا معرفيًا يدعم عملي في تطوير الواجهات وبناء التجارب الرقمية بصورة أكثر وضوحًا واحترافية.",
+  badge: "Academic Foundation",
 };
 
 const projects = [
   {
-    title: "سوق الرقة",
-    summary: "منصة تجارة إلكترونية تركّز على الوضوح، الثقة، وتجربة شراء محسّنة مع بنية قابلة للنمو.",
-    tag: "E-Commerce",
+    title: "AQARI",
+    summary:
+      "منصة عقارية متكاملة صُممت لتقديم تجربة أكثر نضجًا ووضوحًا في سوق العقارات، حيث تجمع بين البحث الدقيق، عرض الوحدات بشكل مقنع، متابعة العقود، ولوحات الإدارة ضمن نظام واحد يرفع الثقة، يسرّع القرار، ويمنح المكاتب العقارية حضورًا رقميًا أكثر قوة واحترافية.",
+    tag: "Real Estate SaaS",
+    stack: ["Property Search", "Contracts", "Admin Dashboard"],
+    cta: "شاهد المشروع مباشرًا",
+    href: "https://aqari-saas.vercel.app/",
+    secondaryCta: "اطلب منصة مشابهة",
+    secondaryHref: "#contact",
+    previewLabel: "Search, listings, contracts",
+    previewBars: [88, 76, 92],
+    previewClassName:
+      "from-amber-200/25 via-cyan-300/10 to-transparent",
+    previewMode: "real-estate",
+    featured: true,
   },
   {
     title: "لوحة تحكم لحظية",
-    summary: "واجهة بيانات تفاعلية لعرض المؤشرات المباشرة بطريقة بصرية حديثة وسهلة القراءة.",
+    summary: "لوحة بيانات تفاعلية تساعد على قراءة المؤشرات المباشرة بسرعة واتخاذ قرارات أوضح عبر عرض بصري منظم وسهل الفهم.",
     tag: "Dashboard",
+    stack: ["React", "Realtime Data", "Charts"],
+    cta: "استعرض هذا النمط",
+    secondaryCta: "ناقش الفكرة",
+    secondaryHref: "#contact",
+    previewLabel: "Live metrics overview",
+    previewHeadline: "قراءة فورية للمؤشرات التي تحسم القرار",
+    previewSubline: "لوحة منظمة تبرز الأداء، التغيرات، والإشارات المهمة في لحظتها.",
+    previewBars: [56, 88, 72],
+    previewClassName:
+      "from-cyan-300/20 via-sky-300/10 to-transparent",
   },
   {
     title: "منصة أدوات ذكية",
-    summary: "تجربة رقمية تجمع بين الأتمتة والذكاء الاصطناعي لإدارة تدفقات العمل بمرونة أكبر.",
+    summary: "منصة رقمية تركّز على تسريع تدفقات العمل عبر واجهة واضحة تجمع بين الأتمتة والذكاء الاصطناعي بشكل عملي وسلس.",
     tag: "AI Tools",
+    stack: ["Next.js", "AI Workflows", "Automation"],
+    cta: "ناقش فكرتك",
+    secondaryCta: "تواصل الآن",
+    secondaryHref: "#contact",
+    previewLabel: "Workflow orchestration",
+    previewHeadline: "أتمتة أوضح لمسارات العمل الذكية",
+    previewSubline: "واجهة تجمع الأدوات والمهام والذكاء الاصطناعي ضمن تدفق أكثر سرعة ومرونة.",
+    previewBars: [74, 69, 86],
+    previewClassName:
+      "from-emerald-300/20 via-teal-300/10 to-transparent",
   },
 ];
 
@@ -110,10 +221,96 @@ const contactChannels = [
   },
 ];
 
+const footerLinks = [
+  { label: "الرئيسية", href: "#home" },
+  { label: "الخدمات", href: "#services" },
+  { label: "التقنيات", href: "#tech" },
+  { label: "المشاريع", href: "#projects" },
+  { label: "تواصل", href: "#contact" },
+];
+
+const footerNotes = [
+  {
+    label: "جاهز للمشاريع الجديدة",
+    value: "أعمل على مواقع شخصية وتجارية وصفحات هبوط بتركيز على السرعة والوضوح.",
+  },
+  {
+    label: "أسلوب العمل",
+    value: "تنفيذ منظم، واجهات دقيقة، ورسائل بصرية تخدم العلامة التجارية بوضوح.",
+  },
+  {
+    label: "نقطة الوصول",
+    value: "قسم التواصل بالأعلى هو المكان الأساسي للوصول السريع إلى جميع القنوات.",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "معاذ الشمطي",
+      alternateName: "Muaz Alshmoty",
+      url: siteUrl,
+      image: `${siteUrl}/icon.svg`,
+      jobTitle: "مطور ويب ومصمم واجهات رقمية",
+      worksFor: {
+        "@type": "Organization",
+        name: "MUAZ TECH",
+      },
+      sameAs: [
+        "https://github.com/Muazalkhabour",
+        "https://www.instagram.com/muaz__92/",
+        "https://www.facebook.com/muaz.alkhabour",
+      ],
+      knowsAbout: [
+        "Next.js",
+        "TypeScript",
+        "UI Design",
+        "Landing Pages",
+        "Digital Marketing",
+        "Frontend Development",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "MUAZ TECH",
+      inLanguage: "ar",
+      description:
+        "موقع معاذ الشمطي لعرض خدمات تطوير الويب، تصميم الواجهات الحديثة، بناء صفحات الهبوط، وتحسين الحضور الرقمي.",
+      publisher: {
+        "@id": `${siteUrl}/#person`,
+      },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#service`,
+      name: "MUAZ TECH",
+      url: siteUrl,
+      description:
+        "خدمات تطوير مواقع احترافية، تصميم صفحات هبوط، وبناء حضور رقمي يربط الموقع بالمنصات الاجتماعية بشكل متناسق.",
+      areaServed: "Worldwide",
+      provider: {
+        "@id": `${siteUrl}/#person`,
+      },
+      serviceType: [
+        "Web Development",
+        "Landing Page Design",
+        "UI Engineering",
+        "Digital Presence Strategy",
+      ],
+    },
+  ],
+};
+
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [shouldRenderScene, setShouldRenderScene] = useState(false);
   const shouldReduceMotion = useReducedMotion() ?? false;
+  const currentYear = new Date().getFullYear();
   const fadeUp = shouldReduceMotion
     ? {
         initial: { opacity: 1, y: 0 },
@@ -173,6 +370,11 @@ export default function Home() {
 
   return (
     <main className="relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute right-1/2 top-0 h-[30rem] w-[30rem] translate-x-1/2 rounded-full bg-amber-400/16 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-[24rem] w-[24rem] rounded-full bg-orange-500/10 blur-3xl" />
@@ -182,20 +384,30 @@ export default function Home() {
         <a href="#home" className="translate-y-2 text-sm font-semibold tracking-[0.35em] text-white/90 sm:translate-y-0">
           <BrandMark compact />
         </a>
-        <nav className="hidden items-center gap-4 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white/70 backdrop-blur md:flex lg:gap-6 lg:px-5 lg:py-3 lg:text-sm">
-          <a href="#services" className="transition hover:text-amber-200">
-            الخدمات
+        <div className="flex items-center gap-3">
+          <nav className="hidden items-center gap-4 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white/70 backdrop-blur md:flex lg:gap-6 lg:px-5 lg:py-3 lg:text-sm">
+            <a href="#services" className="transition hover:text-amber-200">
+              الخدمات
+            </a>
+            <a href="#tech" className="transition hover:text-amber-200">
+              التقنيات
+            </a>
+            <a href="#projects" className="transition hover:text-amber-200">
+              المشاريع
+            </a>
+            <a href="#contact" className="transition hover:text-amber-200">
+              تواصل
+            </a>
+          </nav>
+          <a
+            href="/en"
+            hrefLang="en"
+            lang="en"
+            className="translate-y-2 inline-flex items-center justify-center rounded-full border border-amber-200/20 bg-amber-200/10 px-4 py-2.5 text-xs font-semibold tracking-[0.18em] text-amber-100 transition hover:border-amber-200/35 hover:bg-amber-200/15 hover:text-amber-50 sm:translate-y-0 sm:text-sm"
+          >
+            EN
           </a>
-          <a href="#tech" className="transition hover:text-amber-200">
-            التقنيات
-          </a>
-          <a href="#projects" className="transition hover:text-amber-200">
-            المشاريع
-          </a>
-          <a href="#contact" className="transition hover:text-amber-200">
-            تواصل
-          </a>
-        </nav>
+        </div>
       </header>
 
       <div className="mx-auto w-full max-w-7xl px-4 pb-2 sm:px-6 md:hidden">
@@ -260,10 +472,10 @@ export default function Home() {
               <span className="block whitespace-nowrap">
                 أنا <span className="text-amber-200">معاذ الشمطي</span> | <span className="text-amber-200">M</span>UAZ <span className="text-amber-200">T</span>ECH
               </span>
-              <span className="block leading-[1.75] sm:leading-[1.72] lg:leading-[1.68]">أطور مواقع حديثة و أبني حضوراً رقمياً فعالاً.</span>
+              <span className="block leading-[1.75] sm:leading-[1.72] lg:leading-[1.68]">أطور مواقع حديثة، صفحات هبوط احترافية، وأبني حضورًا رقميًا فعالًا.</span>
             </h1>
             <p className="max-w-2xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8 lg:text-xl">
-              أجمع بين تطوير الويب والتسويق الرقمي لصناعة تجربة احترافية تساعد العلامات التجارية على الظهور، التفاعل، والنمو عبر الموقع ومنصات التواصل.
+              أجمع بين تطوير الويب، تصميم الواجهات، وصفحات الهبوط، والتسويق الرقمي لصناعة تجربة احترافية تساعد العلامات التجارية على الظهور، التفاعل، والنمو عبر الموقع ومنصات التواصل.
             </p>
           </div>
 
@@ -321,9 +533,9 @@ export default function Home() {
       <motion.section id="services" {...fadeUp} className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-10">
         <div className="mb-6 max-w-3xl">
           <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">SERVICES</p>
-          <h2 className="text-2xl font-semibold text-white sm:text-3xl">خدمات تجمع بين التطوير والتسويق الرقمي</h2>
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">خدمات تطوير مواقع وصفحات هبوط وحضور رقمي</h2>
           <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-            لا أقدّم مجرد واجهة جميلة فقط، بل أعمل على بناء حضور رقمي متكامل يخدم الصورة، الرسالة، والنتيجة التي يسعى إليها المشروع.
+            لا أقدّم مجرد واجهة جميلة فقط، بل أعمل على تطوير موقع احترافي وبناء حضور رقمي متكامل يخدم الصورة، الرسالة، والنتيجة التي يسعى إليها المشروع.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -342,52 +554,224 @@ export default function Home() {
       <motion.section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-10" {...fadeUp}>
         <div className="rounded-[2rem] border border-amber-200/15 bg-gradient-to-br from-amber-200/10 to-white/5 p-6 backdrop-blur-xl sm:p-10">
           <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">PLATFORMS</p>
-          <h2 className="max-w-3xl text-2xl font-semibold text-white sm:text-3xl">خبرة في بناء حضور رقمي عبر المنصات الاجتماعية</h2>
+          <h2 className="max-w-3xl text-2xl font-semibold text-white sm:text-3xl">حضور رقمي أوضح عبر المنصات الاجتماعية والإعلانات</h2>
           <p className="mt-4 max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-            أقدّم رؤية تجمع بين تصميم الموقع وفهم سلوك الجمهور على المنصات، بما يساعد على بناء حضور أكثر انسجامًا وفاعلية.
+            أربط بين الموقع والمنصات الاجتماعية والإعلانات الرقمية بطريقة مبسطة تساعد على بناء حضور رقمي متناسق، أوضح في الرسالة، وأقوى في الوصول والتفاعل.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {platforms.map((platform) => (
-              <span
-                key={platform}
-                className="rounded-full border border-white/10 bg-slate-950/40 px-4 py-3 text-xs font-medium text-white/85 backdrop-blur-xl transition hover:border-amber-200/30 hover:text-amber-100 sm:text-sm"
+          <div className="mt-8 grid gap-3 md:grid-cols-3">
+            {platformGroups.map((group) => (
+              <div
+                key={group.title}
+                className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-amber-200/25 sm:p-7"
               >
-                {platform}
-              </span>
+                <div className={["pointer-events-none absolute inset-0 bg-gradient-to-br", group.accentClass].join(" ")} />
+                <div className="relative">
+                  <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-[0.18em] text-white/58 uppercase">
+                    {group.label}
+                  </span>
+                  <p className="mt-4 text-sm font-semibold leading-7 text-white sm:text-base">{group.title}</p>
+                  <p className="mt-2 text-sm leading-7 text-white/60">{group.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </motion.section>
 
       <motion.section id="tech" {...fadeUp} className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-10">
-        <div className="mb-6 flex items-end justify-between gap-6">
-          <div>
-            <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">TECH STACK</p>
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl">التقنيات التي أستخدمها لصناعة منتجات متقنة</h2>
-          </div>
+        <div className="mb-8 max-w-3xl">
+          <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">TECH STACK</p>
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">تقنيات أختارها لبناء منتجات واضحة وسريعة وقابلة للنمو</h2>
+          <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+            لا أعرض التقنيات كأسماء فقط، بل كأدوات أخترتها لتقديم تجربة أفضل، أداء أقوى، وبنية أكثر تنظيمًا لمشاريع تطوير الويب والواجهات الحديثة.
+          </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {stack.map((item) => (
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          {techGroups.map((group) => (
             <div
-              key={item}
-              className="rounded-3xl border border-white/10 bg-white/5 px-5 py-6 text-lg font-medium text-white/85 backdrop-blur-xl transition hover:-translate-y-1 hover:border-amber-200/30 hover:bg-amber-200/[0.08]"
+              key={group.title}
+              className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-amber-200/25 sm:p-7"
             >
-              {item}
+              <div className={["pointer-events-none absolute inset-0 bg-gradient-to-br", group.accentClass].join(" ")} />
+              <div className="relative">
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-[0.2em] text-white/58 uppercase">
+                    <span className="text-amber-100">
+                      <TechGroupIcon type={group.icon} />
+                    </span>
+                    <span>{group.label}</span>
+                  </div>
+                  <span className="text-[11px] font-medium tracking-[0.18em] text-amber-200/70">تقنيات أساسية</span>
+                </div>
+
+                <h3 className="text-xl font-semibold text-white sm:text-2xl">{group.title}</h3>
+                <p className="mt-3 min-h-[5.5rem] text-sm leading-7 text-white/65 sm:text-base">
+                  {group.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={`${group.title}-${item}`}
+                      className="rounded-full border border-white/10 bg-slate-950/40 px-3 py-2 text-xs font-medium text-white/82 backdrop-blur-xl"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-5 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5 backdrop-blur-xl sm:p-6">
+          <p className="mb-4 font-mono text-xs tracking-[0.32em] text-amber-200/70">WORKFLOW PRINCIPLES</p>
+          <div className="flex flex-wrap gap-3">
+            {workflowPrinciples.map((principle) => (
+              <span
+                key={principle}
+                className="rounded-full border border-amber-200/15 bg-amber-200/10 px-4 py-2 text-xs font-medium text-amber-100 sm:text-sm"
+              >
+                {principle}
+              </span>
+            ))}
+          </div>
         </div>
       </motion.section>
 
       <motion.section id="projects" {...fadeUp} className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-10">
         <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">FEATURED PROJECTS</p>
-        <h2 className="mb-8 text-2xl font-semibold text-white sm:text-3xl">نماذج أعمال تعكس التوازن بين التصميم والهندسة</h2>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <h2 className="mb-8 text-2xl font-semibold text-white sm:text-3xl">نماذج أعمال في تطوير المواقع والمنتجات الرقمية</h2>
+        <p className="mb-8 max-w-3xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
+          مشاريع مختارة في تطوير المواقع، تصميم الواجهات، وبناء المنتجات الرقمية مع تركيز على الوضوح البصري، قوة الرسالة، وتجربة استخدام تعزز القيمة الفعلية للمنتج أو الخدمة.
+        </p>
+        <div className="grid auto-rows-fr gap-5 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
               whileHover={{ y: -8 }}
-              className="rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition hover:border-amber-200/20 sm:p-6"
+              className={[
+                "group flex h-full min-h-[42rem] flex-col rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition hover:border-amber-200/20 sm:min-h-[43rem] sm:p-6",
+                project.featured ? "border-amber-200/20 bg-[linear-gradient(180deg,rgba(251,191,36,0.08),rgba(255,255,255,0.04)_22%,rgba(255,255,255,0.03)_100%)]" : "",
+              ].join(" ")}
             >
+              <div
+                className={[
+                  "relative mb-6 overflow-hidden rounded-[1.6rem] border border-white/10 bg-slate-950/70 p-4",
+                  "min-h-[210px]",
+                ].join(" ")}
+              >
+                <div className={["absolute inset-0 bg-gradient-to-br", project.previewClassName].join(" ")} />
+                <div className="absolute inset-x-0 top-0 h-12 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]" />
+                <div className="relative z-10 flex items-center gap-2 text-[10px] text-white/45">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-300/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-300/70" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-300/70" />
+                </div>
+
+                <div className="relative z-10 mt-4 rounded-[1.3rem] border border-white/10 bg-white/[0.04] p-3.5 backdrop-blur-xl">
+                  <div className="mb-4 flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-semibold text-white">{project.previewLabel}</p>
+                      <p className="mt-1 text-xs text-white/45">Preview layout</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {project.featured && (
+                        <span className="rounded-full border border-amber-200/20 bg-amber-200/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-amber-100">
+                          Featured
+                        </span>
+                      )}
+                      <span className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white/55">
+                        {project.tag}
+                      </span>
+                    </div>
+                  </div>
+
+                  {project.previewMode === "real-estate" ? (
+                    <div className="space-y-3">
+                      <div className="rounded-[1rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(15,23,42,0.3))] p-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-amber-200/25 bg-amber-200/10 text-[10px] font-semibold tracking-[0.18em] text-amber-100 shadow-[0_0_20px_rgba(251,191,36,0.18)]">
+                              AQ
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold tracking-[0.22em] text-white">AQARI</p>
+                              <p className="mt-1 text-[10px] uppercase tracking-[0.22em] text-white/45">Real Estate SaaS</p>
+                            </div>
+                          </div>
+                          <span className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] text-white/55">
+                            Live
+                          </span>
+                        </div>
+
+                        <div className="mt-3 grid grid-cols-3 gap-2 text-center text-[10px] text-white/55">
+                          <div className="rounded-xl border border-white/10 bg-white/[0.03] px-2 py-2">
+                            بحث
+                          </div>
+                          <div className="rounded-xl border border-white/10 bg-white/[0.03] px-2 py-2">
+                            خرائط
+                          </div>
+                          <div className="rounded-xl border border-white/10 bg-white/[0.03] px-2 py-2">
+                            عقود
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="rounded-[1rem] border border-white/10 bg-white/[0.03] p-3">
+                          <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-white/35">
+                            <span>Listings</span>
+                            <span>120+</span>
+                          </div>
+                          <div className="h-2 rounded-full bg-white/8">
+                            <div className="h-2 w-[88%] rounded-full bg-[linear-gradient(90deg,rgba(253,224,71,0.9),rgba(56,189,248,0.9))]" />
+                          </div>
+                        </div>
+
+                        <div className="rounded-[1rem] border border-white/10 bg-white/[0.03] p-3">
+                          <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-white/35">
+                            <span>Leads</span>
+                            <span>340+</span>
+                          </div>
+                          <div className="h-2 rounded-full bg-white/8">
+                            <div className="h-2 w-[76%] rounded-full bg-[linear-gradient(90deg,rgba(251,191,36,0.95),rgba(125,211,252,0.92))]" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="rounded-[1rem] border border-white/10 bg-white/[0.03] p-3 text-xs leading-5 text-white/58">
+                        منصة تجمع العروض والمتابعة والإدارة ضمن واجهة أوضح تخدم الباحث والمكتب العقاري معًا.
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="rounded-[1rem] border border-white/10 bg-white/[0.03] p-3">
+                        <p className="text-sm font-semibold text-white">{project.previewHeadline ?? project.previewLabel}</p>
+                        <p className="mt-1 text-xs leading-6 text-white/50">
+                          {project.previewSubline ?? "واجهة مركزة على الوضوح وسهولة القراءة واتخاذ القرار بسرعة."}
+                        </p>
+                      </div>
+                      {project.previewBars.map((bar, barIndex) => (
+                        <div key={`${project.title}-${barIndex}`} className="space-y-2">
+                          <div className="h-2 rounded-full bg-white/8">
+                            <div
+                              className="h-2 rounded-full bg-[linear-gradient(90deg,rgba(253,224,71,0.9),rgba(56,189,248,0.9))]"
+                              style={{ width: `${bar}%` }}
+                            />
+                          </div>
+                          <div className="flex justify-between text-[10px] tracking-[0.18em] text-white/35 uppercase">
+                            <span>Block {barIndex + 1}</span>
+                            <span>{bar}%</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
               <div className="mb-10 flex items-center justify-between gap-4">
                 <p className="font-mono text-xs tracking-[0.3em] text-amber-200/70">0{index + 1}</p>
                 <span className="inline-flex rounded-full border border-white/10 px-3 py-1 text-xs text-white/55">
@@ -395,27 +779,61 @@ export default function Home() {
                 </span>
               </div>
               <h3 className="mb-3 text-xl font-semibold text-white sm:text-2xl">{project.title}</h3>
-              <p className="leading-7 text-white/65">{project.summary}</p>
+              <div className="mb-4 flex flex-wrap gap-2">
+                {project.stack.map((item) => (
+                  <span
+                    key={`${project.title}-${item}`}
+                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[11px] font-medium text-white/68"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="min-h-[11.5rem]">
+                <p className="leading-7 text-white/65">{project.summary}</p>
+              </div>
+              <div className="mt-auto flex flex-col gap-4 border-t border-white/10 pt-5">
+                <span className="text-xs tracking-[0.2em] text-white/35 uppercase">Selected work</span>
+                <div className="grid w-full gap-3">
+                  <a
+                    href={project.href ?? "#contact"}
+                    target={project.href ? "_blank" : undefined}
+                    rel={project.href ? "noreferrer" : undefined}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-amber-200/20 bg-amber-200/10 px-4 py-2.5 text-center text-sm font-semibold text-amber-100 transition hover:border-amber-200/35 hover:bg-amber-200/15 hover:text-amber-50"
+                  >
+                    <span>{project.cta}</span>
+                    <span aria-hidden="true">←</span>
+                  </a>
+                  <a
+                    href={project.secondaryHref ?? "#contact"}
+                    target={project.secondaryHref?.startsWith("http") ? "_blank" : undefined}
+                    rel={project.secondaryHref?.startsWith("http") ? "noreferrer" : undefined}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2.5 text-center text-sm font-semibold text-white/78 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+                  >
+                    <span>{project.secondaryCta ?? "تواصل الآن"}</span>
+                  </a>
+                </div>
+              </div>
             </motion.article>
           ))}
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-10">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <motion.section {...fadeUp} className="mx-auto w-full max-w-7xl px-4 py-3 sm:px-6 lg:px-10">
+        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl sm:p-8">
+          <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">CREDENTIALS</p>
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl">شهادات تدعم الثقة والمصداقية</h2>
+              <h2 className="text-xl font-semibold text-white sm:text-2xl">شهادات تدعم الثقة والمصداقية</h2>
             </div>
-            <span className="inline-flex self-start rounded-full border border-amber-200/20 bg-amber-200/10 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-amber-100 sm:self-auto">
+            <span className="inline-flex self-start rounded-full border border-amber-200/20 bg-amber-200/10 px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-amber-100 sm:self-auto">
               {credential.badge}
             </span>
           </div>
 
-          <div className="rounded-[1.75rem] border border-amber-200/15 bg-gradient-to-br from-amber-200/[0.10] to-transparent p-6">
-            <p className="mb-3 text-xl font-semibold text-white">{credential.title}</p>
-            <p className="max-w-3xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8">{credential.description}</p>
+          <div className="rounded-[1.5rem] border border-amber-200/15 bg-gradient-to-br from-amber-200/[0.10] to-transparent p-5 sm:p-6">
+            <p className="mb-2 text-lg font-semibold text-white sm:text-xl">{credential.title}</p>
+            <p className="max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">{credential.description}</p>
           </div>
         </div>
       </motion.section>
@@ -423,9 +841,9 @@ export default function Home() {
       <motion.section id="contact" {...fadeUp} className="mx-auto w-full max-w-7xl px-4 pb-20 pt-4 sm:px-6 lg:px-10">
         <div className="rounded-[2rem] border border-amber-200/15 bg-gradient-to-br from-amber-200/10 to-white/5 p-6 backdrop-blur-xl sm:p-10">
           <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">CONTACT</p>
-          <h2 className="mb-4 max-w-3xl text-2xl font-semibold text-white sm:text-3xl">جاهز لتحويل فكرتك إلى تجربة رقمية احترافية</h2>
+          <h2 className="mb-4 max-w-3xl text-2xl font-semibold text-white sm:text-3xl">جاهز لتحويل فكرتك إلى موقع احترافي أو تجربة رقمية متكاملة</h2>
           <p className="max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-            إذا كنت تبحث عن موقع احترافي وحضور رقمي أقوى على المنصات الاجتماعية، يسعدني مساعدتك في بناء تجربة متكاملة تخدم مشروعك وتظهره بصورة أكثر قوة واحترافية.
+            إذا كنت تبحث عن تطوير موقع احترافي، صفحة هبوط فعالة، أو حضور رقمي أقوى على المنصات الاجتماعية، يسعدني مساعدتك في بناء تجربة متكاملة تخدم مشروعك وتظهره بصورة أكثر قوة واحترافية.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -480,6 +898,83 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
+
+      <motion.footer {...fadeUp} className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)_18%,rgba(2,6,23,0.95)_100%)] p-6 shadow-[0_28px_90px_rgba(2,6,23,0.34)] backdrop-blur-2xl sm:p-8 lg:p-10">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-0 top-0 h-32 w-32 rounded-full bg-amber-300/10 blur-3xl" />
+            <div className="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-cyan-300/10 blur-3xl" />
+          </div>
+
+          <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr_0.9fr] lg:gap-10">
+            <div className="space-y-4">
+              <div className="w-fit rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur">
+                <BrandMark />
+              </div>
+              <p className="max-w-md text-base leading-8 text-white/68 sm:text-lg">
+                أطور مواقع حديثة وهوية رقمية واضحة تساعد المشاريع على الظهور بصورة احترافية وبأداء سريع وتجربة استخدام دقيقة.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full border border-amber-200/15 bg-amber-200/10 px-3 py-2 text-xs font-medium text-amber-100">
+                  Next.js
+                </span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/75">
+                  UI Engineering
+                </span>
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/75">
+                  Digital Presence
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <p className="mb-4 font-mono text-xs tracking-[0.32em] text-amber-200/70">NAVIGATION</p>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                {footerLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="group flex items-center justify-between rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm text-white/72 transition hover:border-amber-200/25 hover:bg-amber-200/[0.06] hover:text-amber-100"
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-white/25 transition group-hover:text-amber-100/70">/</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="mb-4 font-mono text-xs tracking-[0.32em] text-amber-200/70">FOOTER NOTES</p>
+              <div className="space-y-3">
+                {footerNotes.map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-[1.5rem] border border-white/8 bg-slate-950/40 px-4 py-4"
+                  >
+                    <p className="mb-2 text-sm font-semibold text-white">{item.label}</p>
+                    <p className="text-sm leading-7 text-white/58">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mt-8 flex flex-col items-center gap-4 border-t border-white/10 pt-5 text-center text-sm text-white/50">
+            <BrandMark compact className="shrink-0" />
+            <p className="max-w-xl leading-7 text-white/58">
+              جميع الحقوق محفوظة لـ MUAZ TECH
+            </p>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-medium text-white/72 transition hover:border-amber-200/25 hover:text-amber-100"
+            >
+              <span>العودة للأعلى</span>
+              <span aria-hidden="true">↑</span>
+            </button>
+          </div>
+        </div>
+      </motion.footer>
 
       {showScrollTop && (
         <motion.button
