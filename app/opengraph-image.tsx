@@ -95,8 +95,8 @@ export default function OpenGraphImage() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: "760px" }}>
-            <div style={{ fontSize: 58, fontWeight: 800, lineHeight: 1.2 }}>معاذ الشمطي</div>
-            <div style={{ fontSize: 30, color: "#fde68a", fontWeight: 700 }}>تطوير واجهات ومواقع رقمية حديثة</div>
+            <div style={{ fontSize: 58, fontWeight: 800, lineHeight: 1.2 }}>Muaz Alshmoty</div>
+            <div style={{ fontSize: 30, color: "#fde68a", fontWeight: 700 }}>Modern websites and digital experiences</div>
             <div style={{ fontSize: 24, lineHeight: 1.6, color: "rgba(255,255,255,0.76)" }}>
               Portfolio focused on modern web development, landing pages, user interfaces, and stronger digital presence.
             </div>
