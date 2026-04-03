@@ -110,7 +110,8 @@ export default function RootLayout({
   children: React.ReactNode;
   params?: Promise<{ locale?: string }>;
 }>) {
-  const localePromise = params ?? Promise.resolve({});
+  const localePromise: Promise<{ locale?: string }> =
+    params ?? Promise.resolve({ locale: undefined });
 
   return localePromise.then(({ locale }) => {
     const currentLocale = locale === "en" ? "en" : "ar";
