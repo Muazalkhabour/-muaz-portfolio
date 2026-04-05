@@ -277,7 +277,7 @@ export default function Home() {
               <span className="block">
                 أنا <span className="text-amber-200">معاذ الشمطي</span> | <span className="text-amber-200">M</span>UAZ <span className="text-amber-200">T</span>ECH
               </span>
-              <span className="block leading-[1.68] sm:leading-[1.72] lg:leading-[1.68]">أبني بنية رقمية متكاملة، أوحّد فيها هندسة الواجهة مع منطق الرسالة والتسويق الرقمي.</span>
+              <span className="block leading-[1.68] sm:leading-[1.72] lg:leading-[1.68]">أقوم ببناء معمارية رقمية متكاملة , أدمج فيها هندسة الواجهات مع محركات التسويق الحديثة.</span>
             </h1>
             <p className="max-w-2xl text-[15px] leading-7 text-white/70 sm:text-lg sm:leading-8 lg:text-xl">
               أجمع بين تطوير الويب وبنية المحتوى وتجربة الاستخدام بحيث يعمل الموقع بوصفه طبقة عرض واتصال وقرار، لا مجرد حضور بصري معزول.
