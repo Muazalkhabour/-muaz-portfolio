@@ -267,10 +267,10 @@ export default function Home() {
           <div className="space-y-4 sm:space-y-5">
             <p
               dir="ltr"
-              className="flex w-fit max-w-full flex-col gap-1 font-mono text-[11px] leading-5 tracking-[0.18em] text-white/45 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2 sm:text-sm sm:leading-6 sm:tracking-[0.24em] lg:flex-nowrap lg:gap-x-5 lg:tracking-[0.28em]"
+              className="flex w-fit max-w-full flex-row flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] leading-5 tracking-[0.18em] text-white/45 sm:gap-x-3 sm:gap-y-2 sm:text-sm sm:leading-6 sm:tracking-[0.24em] lg:flex-nowrap lg:gap-x-5 lg:tracking-[0.28em]"
             >
               <span className="whitespace-nowrap">WEB DEVELOPER</span>
-              <span className="hidden text-white/25 sm:inline">/</span>
+              <span className="text-white/25">/</span>
               <span className="whitespace-nowrap">DIGITAL MARKETER</span>
             </p>
             <h1 className="flex max-w-3xl flex-col gap-2 text-[1.52rem] font-semibold leading-[1.38] tracking-tight text-white sm:gap-2 sm:text-[1.9rem] sm:leading-[1.4] lg:text-[2.65rem] lg:leading-[1.4]">

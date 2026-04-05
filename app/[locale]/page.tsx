@@ -197,7 +197,7 @@ export default async function EnglishPage({ params }: PageProps) {
           </div>
 
           <div className="space-y-4 sm:space-y-5">
-            <p className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] tracking-[0.24em] text-white/45 sm:text-sm">
+            <p className="flex flex-row flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] tracking-[0.18em] text-white/45 sm:gap-x-3 sm:gap-y-2 sm:text-sm sm:tracking-[0.24em]">
               <span>WEB DEVELOPER</span>
               <span className="text-white/25">/</span>
               <span>DIGITAL MARKETER</span>

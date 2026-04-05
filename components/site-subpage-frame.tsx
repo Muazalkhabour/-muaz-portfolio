@@ -95,7 +95,7 @@ export default function SiteSubpageFrame({
 
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div>
-              <h1 className="max-w-4xl text-[2rem] font-semibold leading-[1.45] tracking-tight text-white sm:text-[2.5rem] lg:text-[3.15rem]">
+              <h1 className="max-w-4xl text-[1.72rem] font-semibold leading-[1.5] tracking-tight text-white sm:text-[2.5rem] lg:text-[3.15rem]">
                 {title}
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-white/70 sm:text-lg sm:leading-8 lg:text-xl">
