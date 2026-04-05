@@ -36,7 +36,7 @@ const metrics = [
 
 export const metadata: Metadata = {
   title: "صفحات هبوط مهيأة للتحويل | MUAZ TECH",
-  description: "خدمة تصميم وتطوير صفحات هبوط تركّز على دقة العرض وبنية المحتوى وتوجيه المستخدم إلى إجراء واحد واضح.",
+  description: "خدمة تصميم وتطوير صفحات هبوط مخصصة للحملات والعروض المركزة مع بنية تقود المستخدم إلى إجراء واحد واضح.",
   alternates: {
     canonical: "/services/landing-pages",
     languages: {
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "صفحات هبوط مهيأة للتحويل | MUAZ TECH",
-    description: "صفحة خدمة تفصيلية تشرح متى تكون صفحة الهبوط هي الصيغة الأنسب وكيف تُبنى ضمن نفس هوية الموقع.",
+    description: "صفحة خدمة تفصيلية تشرح متى تكون صفحة الهبوط هي الصيغة الأنسب وكيف تُبنى حول عرض واحد ومسار تحويل مباشر.",
     url: `${siteUrl}/services/landing-pages`,
     type: "website",
   },
@@ -70,7 +70,7 @@ export default function LandingPagesServicePage() {
         { label: "الأسئلة", href: "/faq" },
         { label: "تواصل", href: "/contact" },
       ]}
-      primaryAction={{ label: "إرسال brief لصفحة الهبوط", href: "#project-brief" }}
+      primaryAction={{ label: "إرسال طلب لصفحة الهبوط", href: "#project-brief" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">

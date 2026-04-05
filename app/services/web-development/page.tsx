@@ -59,7 +59,7 @@ const priorities = [
 
 export const metadata: Metadata = {
   title: "تطوير مواقع احترافية | MUAZ TECH",
-  description: "خدمة تطوير مواقع احترافية تركّز على وضوح العرض والهوية والأداء وسهولة الوصول إلى الإجراء المطلوب.",
+  description: "خدمة تطوير مواقع احترافية تبني حضورًا مؤسسيًا واضحًا ببنية قابلة للتوسع وتجربة تقود المستخدم إلى الإجراء الصحيح.",
   alternates: {
     canonical: "/services/web-development",
     languages: {
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "تطوير مواقع احترافية | MUAZ TECH",
-    description: "صفحة خدمة تفصيلية توضّح منهج تطوير المواقع الاحترافية من حيث الهيكل والواجهة والهوية والأداء.",
+    description: "صفحة خدمة تفصيلية توضّح كيف يُبنى الموقع من الهدف والبنية والمحتوى حتى التنفيذ الجاهز للنشر.",
     url: `${siteUrl}/services/web-development`,
     type: "website",
   },
@@ -93,7 +93,7 @@ export default function WebDevelopmentServicePage() {
         { label: "الأسئلة", href: "/faq" },
         { label: "تواصل", href: "/contact" },
       ]}
-      primaryAction={{ label: "إرسال brief لهذه الخدمة", href: "#project-brief" }}
+      primaryAction={{ label: "إرسال طلب لهذه الخدمة", href: "#project-brief" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">

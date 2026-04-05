@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.82,
     },
     {
+      url: `${siteUrl}/approach`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.83,
+    },
+    {
       url: `${siteUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -75,6 +81,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/en/approach`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.71,
     },
     {
       url: `${siteUrl}/en/contact`,

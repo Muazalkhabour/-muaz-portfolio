@@ -10,7 +10,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").re
 const decisionNotes = [
   "This page presents the main criteria for deciding between a full website and a landing page before implementation begins.",
   "If the current site fails to clarify value or direct the next action, the issue is usually structural rather than merely cosmetic.",
-  "The brief form is the appropriate next step when the objective is to move toward a more defined scope of work.",
+  "The intake form is the appropriate next step when the objective is to move toward a more defined scope of work.",
 ];
 
 const structuredData = {

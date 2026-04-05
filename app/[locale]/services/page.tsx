@@ -9,23 +9,46 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").re
 const workflow = [
   {
     step: "01",
-    title: "Define the goal",
-    description: "I identify the project type, the core message, and the audience that needs to understand the value quickly.",
+    title: "Read context and objective",
+    description: "The process starts by identifying the project type, the core message, and the audience that needs to recognize the value quickly and clearly.",
   },
   {
     step: "02",
-    title: "Plan structure and content",
-    description: "Sections, headlines, trust points, and conversion flow are shaped before detailed implementation begins.",
+    title: "Define structure and path",
+    description: "Sections, headlines, trust points, and conversion flow are organized before detailed implementation begins so the direction stays clear from the start.",
   },
   {
     step: "03",
-    title: "Design and build",
-    description: "The idea becomes a modern responsive interface that stays aligned with the site identity and real use.",
+    title: "Execute interface and use flow",
+    description: "The concept becomes a responsive interface aligned with identity and actual use without separating visual form from function.",
   },
   {
     step: "04",
-    title: "Refine and launch",
-    description: "The final flow is reviewed so contact, conversion, and responsiveness are ready before handoff.",
+    title: "Review readiness and launch",
+    description: "The final flow is reviewed so contact, conversion, and responsiveness are ready across screens and actual usage scenarios.",
+  },
+];
+
+const serviceMarketingFit = [
+  {
+    title: "Professional Web Development",
+    objective: "Clear business presence",
+    fit: "Best when the objective is a stronger business presence with clearer service structure and a scalable trust foundation.",
+  },
+  {
+    title: "Conversion-Focused Landing Pages",
+    objective: "Direct conversion",
+    fit: "Best when the objective is one campaign, one offer, or one explicit conversion path built around focused messaging.",
+  },
+  {
+    title: "Interfaces and Digital Products",
+    objective: "Product-use clarity",
+    fit: "Best when the emphasis is usability clarity, task sequence, and reducing friction inside the product itself.",
+  },
+  {
+    title: "Integrated Digital Presence",
+    objective: "Consistent acquisition and presence",
+    fit: "Best when the site must align with content, platforms, and paid traffic inside one consistent acquisition and communication system.",
   },
 ];
 
@@ -39,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: "Services | MUAZ TECH",
-    description: "The main services page covering web development, landing pages, product interfaces, and digital presence work.",
+    description: "Service areas covering web development, landing pages, product interfaces, and digital presence within a goal-led execution model.",
     alternates: {
       canonical: "/en/services",
       languages: {
@@ -50,7 +73,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       title: "Services | MUAZ TECH",
-      description: "A unified services page presenting all core offerings within the same visual identity of the site.",
+      description: "Digital services built around choosing the right format first, then executing it with clear structure and consistent identity.",
       url: `${siteUrl}/en/services`,
       type: "website",
     },
@@ -71,8 +94,8 @@ export default async function EnglishServicesPage({ params }: PageProps) {
     <SiteSubpageFrame
       locale="en"
       eyebrow="SERVICES"
-      title="Define the most appropriate implementation path for the project"
-      description="This page presents the service paths as distinct execution frameworks, helping determine whether the project is better served by a business website, landing page, product interface, or integrated digital presence model."
+      title="Choose the execution path according to project type and actual structure"
+      description="This page presents services as different execution paths, helping define whether the right output is a business website, landing page, product interface, or a broader and more coherent digital presence model."
       currentLabel="Services"
       alternateHref="/services"
       alternateLabel="العربية"
@@ -86,16 +109,16 @@ export default async function EnglishServicesPage({ params }: PageProps) {
       primaryAction={{ label: "Go to the contact page", href: "/en/contact" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
-        <div className="rounded-[2rem] border border-amber-200/15 bg-gradient-to-br from-amber-200/10 to-white/5 p-6 backdrop-blur-xl sm:p-8">
+        <div className="rounded-[2rem] border border-amber-200/15 bg-[linear-gradient(180deg,rgba(251,191,36,0.1),rgba(255,255,255,0.03)_28%,rgba(15,23,42,0.74)_100%)] p-6 shadow-[0_22px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl sm:p-8">
           <div className="mb-6 max-w-3xl">
             <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">DECISION GUIDE</p>
             <h2 className="text-2xl font-semibold text-white sm:text-3xl">How is the appropriate path determined?</h2>
-            <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">The decision should begin with project type and communication objective rather than the service label alone. Each path here corresponds to a distinct output model and usage structure.</p>
+            <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">The decision should begin with project type and operating objective rather than the service label alone. Each path here corresponds to a distinct output model and usage structure.</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
             {serviceDecisionGuides.en.map((item) => (
-              <Link key={item.title} href={item.href} className="group rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-1 hover:border-amber-200/25">
+              <Link key={item.title} href={item.href} className="group rounded-[1.75rem] border border-white/10 bg-slate-950/35 p-5 transition hover:-translate-y-1 hover:border-amber-200/25 hover:bg-slate-950/50">
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                 <p className="mt-3 min-h-[8rem] text-sm leading-7 text-white/64">{item.description}</p>
                 <p className="mt-4 text-sm font-semibold text-amber-100 transition group-hover:text-amber-50">{item.cta}</p>
@@ -108,9 +131,16 @@ export default async function EnglishServicesPage({ params }: PageProps) {
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {servicePaths.en.map((service) => (
-            <div key={service.title} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-amber-200/25">
+            <div key={service.title} className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(15,23,42,0.58))] p-6 shadow-[0_18px_55px_rgba(2,6,23,0.16)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-amber-200/25">
               <p className="mb-3 text-lg font-semibold text-white">{service.title}</p>
               <p className="min-h-[7rem] text-sm leading-7 text-white/63">{service.description}</p>
+              <div className="mt-4 rounded-[1.35rem] border border-white/10 bg-slate-950/35 px-4 py-4">
+                <p className="mb-2 font-mono text-[11px] tracking-[0.22em] text-amber-200/65">OBJECTIVE FIT</p>
+                <span className="mb-3 inline-flex rounded-full border border-amber-200/16 bg-amber-200/10 px-3 py-1.5 text-[11px] font-medium text-amber-100">
+                  Objective: {serviceMarketingFit.find((item) => item.title === service.title)?.objective}
+                </span>
+                <p className="text-sm leading-7 text-white/64">{serviceMarketingFit.find((item) => item.title === service.title)?.fit}</p>
+              </div>
               <Link href={service.href} className="mt-6 inline-flex rounded-full border border-white/12 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-white/82 transition hover:border-amber-200/30 hover:text-amber-100">
                 {service.pageCta}
               </Link>
@@ -120,10 +150,11 @@ export default async function EnglishServicesPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
+        <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(15,23,42,0.68))] p-6 backdrop-blur-xl sm:p-8">
           <div className="mb-6 max-w-3xl">
             <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">OUTCOME CHECK</p>
             <h2 className="text-2xl font-semibold text-white sm:text-3xl">Decision criteria before selecting a service path</h2>
+            <p className="mt-4 text-base leading-7 text-white/68 sm:text-lg sm:leading-8">These questions help distinguish between the need for a scalable structure, a focused landing page, or a path that first requires structural revision.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/40 p-5 text-sm leading-7 text-white/64">Do you need room to explain multiple services, or just one focused offer?</div>
@@ -134,11 +165,11 @@ export default async function EnglishServicesPage({ params }: PageProps) {
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
-        <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6 backdrop-blur-xl sm:p-8">
+        <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)_18%,rgba(15,23,42,0.78)_100%)] p-6 shadow-[0_20px_60px_rgba(2,6,23,0.18)] backdrop-blur-xl sm:p-8">
           <div className="mb-6 max-w-3xl">
             <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">WORKFLOW</p>
             <h2 className="text-2xl font-semibold text-white sm:text-3xl">Workflow from initiation to delivery</h2>
-            <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">Although services differ in scope, the working method remains consistent: define the objective, structure the content, implement the interface, and review the final result against the intended use.</p>
+            <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">Although services differ in scope, the working method remains consistent: read the objective, structure the content, implement the interface, and review the final result against intended use.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {workflow.map((item) => (

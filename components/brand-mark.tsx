@@ -16,9 +16,9 @@ export default function BrandMark({ className = "", compact = false }: BrandMark
         </span>
       </div>
       {!compact && (
-        <div>
-          <p className="text-sm font-semibold text-white">معاذ الشمطي</p>
-          <p className="text-xs tracking-[0.25em] text-white/45">WEB DEVELOPER</p>
+        <div className="flex flex-col gap-2.5">
+          <p className="text-sm font-semibold leading-none text-white">معاذ الشمطي</p>
+          <p className="text-xs leading-none tracking-[0.25em] text-white/45">WEB DEVELOPER</p>
         </div>
       )}
     </div>

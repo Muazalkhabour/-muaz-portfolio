@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: "Conversion-Focused Landing Pages | MUAZ TECH",
-    description: "A landing-page service focused on precise offer presentation, content structure, and directing the user toward one explicit action.",
+    description: "A landing-page service for campaigns and focused offers, built around one clear message and one explicit action.",
     alternates: {
       canonical: "/en/services/landing-pages",
       languages: {
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       title: "Conversion-Focused Landing Pages | MUAZ TECH",
-      description: "A detailed service page explaining when a landing page is the appropriate format and how it is implemented within the same site identity.",
+      description: "A detailed service page explaining when a landing page is the right format and how it is built around one offer and a direct conversion path.",
       url: `${siteUrl}/en/services/landing-pages`,
       type: "website",
     },
@@ -93,7 +93,7 @@ export default async function EnglishLandingPagesServicePage({ params }: PagePro
         { label: "FAQ", href: "/en/faq" },
         { label: "Contact", href: "/en/contact" },
       ]}
-      primaryAction={{ label: "Submit a landing-page brief", href: "#project-brief" }}
+      primaryAction={{ label: "Submit landing-page request", href: "#project-brief" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">

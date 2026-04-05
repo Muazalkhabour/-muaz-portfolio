@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BrandMark from "@/components/brand-mark";
+import MobileHeaderNav from "@/components/mobile-header-nav";
 import SocialLinks from "@/components/social-links";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 
@@ -35,9 +36,13 @@ export default function SiteSubpageFrame({
 }: SiteSubpageFrameProps) {
   const isArabic = locale === "ar";
   const primaryIsExternal = primaryAction.href.startsWith("http");
+  const approachLink = { label: isArabic ? "المنهج" : "Approach", href: isArabic ? "/approach" : "/en/approach" };
+  const navLinksWithApproach = [...navLinks.slice(0, 2), approachLink, ...navLinks.slice(2)].filter(
+    (link, index, links) => index === links.findIndex((entry) => entry.href === link.href),
+  );
   const footerLinks = [
     { label: isArabic ? "الرئيسية" : "Home", href: isArabic ? "/" : "/en" },
-    ...navLinks,
+    ...navLinksWithApproach,
   ];
 
   return (
@@ -55,7 +60,7 @@ export default function SiteSubpageFrame({
 
         <div className="flex items-center gap-3">
           <nav className="hidden items-center gap-4 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white/70 backdrop-blur md:flex lg:gap-6 lg:px-5 lg:py-3 lg:text-sm">
-            {navLinks.map((link) => (
+            {navLinksWithApproach.map((link) => (
               <Link key={link.href} href={link.href} className="transition hover:text-amber-200">
                 {link.label}
               </Link>
@@ -73,21 +78,11 @@ export default function SiteSubpageFrame({
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-7xl px-4 pb-2 sm:px-6 md:hidden">
-        <nav className="mx-auto flex w-full items-center justify-center gap-2 overflow-x-auto rounded-full border border-white/10 bg-white/5 px-2 py-2 text-xs text-white/75 backdrop-blur [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {navLinks.map((link) => (
-            <Link
-              key={`${link.href}-mobile`}
-              href={link.href}
-              className="shrink-0 rounded-full border border-transparent bg-white/[0.04] px-4 py-2 transition hover:border-amber-200/25 hover:text-amber-100"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+      <div className="mx-auto w-full max-w-7xl px-4 pb-3 sm:px-6 sm:pb-4 md:hidden">
+        <MobileHeaderNav links={navLinksWithApproach} direction={isArabic ? "rtl" : "ltr"} />
       </div>
 
-      <section className="mx-auto w-full max-w-7xl px-4 pb-6 pt-2 sm:px-6 sm:pb-10 sm:pt-4 lg:px-10">
+      <section className="mx-auto w-full max-w-7xl px-4 pb-8 pt-3 sm:px-6 sm:pb-12 sm:pt-5 lg:px-10">
         <div className="overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)_18%,rgba(2,6,23,0.92)_100%)] p-6 shadow-[0_28px_90px_rgba(2,6,23,0.34)] backdrop-blur-2xl sm:p-8 lg:p-10">
           <div className="pointer-events-none absolute inset-0" />
 
@@ -139,7 +134,9 @@ export default function SiteSubpageFrame({
         </div>
       </section>
 
-      <section className="pb-16">{children}</section>
+      <section className="pb-16 sm:pb-20">
+        <div className="space-y-2 sm:space-y-4">{children}</div>
+      </section>
 
       <footer className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-10">
         <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">

@@ -5,26 +5,26 @@ import SiteSubpageFrame from "@/components/site-subpage-frame";
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 const responseNotes = [
-  "يساعد brief المنظم على تقليل الزمن اللازم لفهم المتطلبات الأولية.",
-  "عندما تكون الفكرة في مرحلة التشكل، يسهّل الوصف الأولي ضبط نطاق النقاش بصورة أكثر دقة.",
-  "تتركز أهمية هذه المرحلة في تحديد نوع المشروع وهدفه والإجراء الأساسي المتوقع من المستخدم.",
+  "يساعد نموذج intake المنظم على تقليل الزمن اللازم لقراءة الحالة الحالية وتحديد نقطة البدء التنفيذية.",
+  "عندما تكون الفكرة في مرحلة التشكل، يسهّل إدخال الهدف الأساسي والنطاق اللغوي والحالة الحالية ضبط القرار الأولي بصورة أدق.",
+  "تتركز أهمية هذه المرحلة في تحويل الطلب من فكرة عامة إلى مدخلات قابلة للتقييم التقني والتنفيذي.",
 ];
 
 const conversionSignals = [
-  "تحديد أولي للمسار التنفيذي الأنسب: موقع، صفحة هبوط، أو مراجعة بنيوية.",
-  "تقليل التبادل غير الضروري في الرسائل من خلال نموذج brief منظم.",
-  "توجيه النقاش نحو النتيجة المطلوبة ونطاق العمل قبل التفاصيل الثانوية.",
+  "تحديد أولي للمسار التنفيذي الأنسب: موقع، صفحة هبوط، أو مراجعة بنيوية، استنادًا إلى الحالة الحالية للمشروع.",
+  "تقليل التبادل غير الضروري في الرسائل عبر نموذج intake يجمع نوع المشروع، الهدف الأساسي، النطاق اللغوي، ومتطلبات التشغيل الأساسية.",
+  "توجيه النقاش نحو النتيجة المطلوبة، النطاق التنفيذي، وزمن الإطلاق قبل التفاصيل الثانوية.",
 ];
 
 const nextSteps = [
-  "أراجع الفكرة ونوع المشروع والهدف الأساسي.",
-  "أحدد معك إذا كان الأنسب موقعًا كاملًا أو صفحة هبوط أو تحسينًا بنيويًا.",
-  "ننتقل بعدها إلى نطاق أوضح وخطوة تنفيذية عملية.",
+  "أراجع الفكرة، الحالة الحالية، والهدف الأساسي للمشروع: تحويل مباشر، حضور مؤسسي، أو حملة موجهة.",
+  "أحدد معك نموذج التنفيذ الأنسب وفق نطاق المحتوى، اللغة، ومتطلبات الإطلاق.",
+  "ننتقل بعدها إلى تقدير أولي ونقطة تنفيذ واضحة قابلة للمتابعة.",
 ];
 
 export const metadata: Metadata = {
   title: "تواصل | MUAZ TECH",
-  description: "صفحة التواصل واستقبال طلبات المشاريع عبر نموذج brief أولي يحدد المتطلبات الأساسية قبل النقاش التفصيلي.",
+  description: "صفحة intake مخصصة لاستقبال طلبات المشاريع وتحديد الحالة الحالية والهدف الأساسي قبل النقاش التفصيلي.",
   alternates: {
     canonical: "/contact",
     languages: {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "تواصل | MUAZ TECH",
-    description: "استقبال طلبات المشاريع عبر نموذج brief أولي يسهّل تحديد النطاق قبل التواصل التفصيلي.",
+    description: "استقبال طلبات المشاريع عبر intake أولي يحدد النطاق والهدف ومسار النقاش التنفيذي من البداية.",
     url: `${siteUrl}/contact`,
     type: "website",
   },
@@ -47,7 +47,7 @@ export default function ContactPage() {
       locale="ar"
       eyebrow="CONTACT"
       title="التواصل واستقبال طلبات المشاريع"
-      description="تُخصص هذه الصفحة لاستقبال الطلبات الأولية عبر brief مختصر، بما يسمح بتحديد النطاق الفني والمتطلبات الأساسية قبل الانتقال إلى النقاش التفصيلي."
+      description="تُخصص هذه الصفحة لاستقبال الطلبات الأولية عبر نموذج intake مختصر، بما يسمح بقراءة الحالة الحالية، تحديد الهدف الأساسي، وترتيب المتطلبات قبل الانتقال إلى النقاش التفصيلي."
       currentLabel="تواصل"
       alternateHref="/en/contact"
       alternateLabel="EN"
@@ -58,7 +58,7 @@ export default function ContactPage() {
         { label: "الأسئلة", href: "/faq" },
         { label: "تواصل", href: "/contact" },
       ]}
-      primaryAction={{ label: "إرسال brief المشروع", href: "/contact#project-brief" }}
+      primaryAction={{ label: "إرسال طلب المشروع", href: "/contact#project-brief" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 md:grid-cols-3">
@@ -78,7 +78,7 @@ export default function ContactPage() {
           <div className="space-y-4">
             <div className="rounded-[1.9rem] border border-amber-200/20 bg-gradient-to-br from-amber-200/14 to-white/5 p-5 backdrop-blur-xl sm:p-6">
               <p className="mb-2 font-mono text-xs tracking-[0.3em] text-amber-200/70">CLOSING PATH</p>
-              <h3 className="text-xl font-semibold text-white">ماذا يتبع إرسال brief المشروع؟</h3>
+              <h3 className="text-xl font-semibold text-white">ماذا يتبع إرسال طلب المشروع؟</h3>
               <div className="mt-4 space-y-3">
                 {nextSteps.map((item, index) => (
                   <div key={item} className="flex items-start gap-3 rounded-[1.3rem] border border-white/10 bg-slate-950/36 px-4 py-4">
@@ -93,9 +93,9 @@ export default function ContactPage() {
 
             <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl sm:p-6">
               <p className="mb-2 font-mono text-xs tracking-[0.3em] text-amber-200/70">ONE CHANNEL</p>
-              <h3 className="text-xl font-semibold text-white">brief المشروع هو نقطة البداية في هذه الصفحة</h3>
+              <h3 className="text-xl font-semibold text-white">نموذج الـ intake هو نقطة البداية في هذه الصفحة</h3>
               <p className="mt-3 text-sm leading-7 text-white/63">
-                بعد تعبئة النموذج يتم فتح WhatsApp بصياغة أولية منظمة، لذلك لا توجد حاجة إلى توزيع البداية على قنوات متعددة داخل الصفحة نفسها.
+                بعد تعبئة النموذج يتم فتح WhatsApp بصياغة أولية منظمة، لذلك لا توجد حاجة إلى توزيع نقطة البداية على قنوات متعددة داخل الصفحة نفسها.
               </p>
             </div>
           </div>

@@ -4,9 +4,9 @@ import "./globals.css";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 const siteName = "MUAZ TECH";
-const seoTitle = "معاذ الشمطي | مطور ويب وتطوير واجهات رقمية احترافية";
+const seoTitle = "معاذ الشمطي | تطوير مواقع وواجهات رقمية مبنية على الهدف";
 const seoDescription =
-  "موقع معاذ الشمطي لعرض خدمات تطوير الويب، تصميم الواجهات الحديثة، بناء صفحات الهبوط، وتحسين الحضور الرقمي عبر تجربة سريعة واحترافية.";
+  "موقع شخصي تقني يعرض تطوير المواقع وصفحات الهبوط والواجهات الرقمية ضمن منهج يربط وضوح الرسالة بالبنية التنفيذية ومسار الإجراء.";
 
 const tajawal = Tajawal({
   variable: "--font-tajawal",

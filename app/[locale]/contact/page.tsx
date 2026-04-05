@@ -6,21 +6,21 @@ import SiteSubpageFrame from "@/components/site-subpage-frame";
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 const responseNotes = [
-  "A structured brief reduces the time required to understand the initial requirements.",
-  "When the idea is still forming, an initial outline helps define the discussion more precisely.",
-  "The main objective of this stage is to determine project type, intended outcome, and the primary user action.",
+  "A structured intake reduces the time required to read current state and define an executable starting point.",
+  "When the idea is still forming, primary objective, current-site status, and language scope help define the initial decision more precisely.",
+  "The objective of this stage is to turn the request into inputs that can be reviewed technically and operationally.",
 ];
 
 const conversionSignals = [
-  "An initial determination of the most appropriate execution path: website, landing page, or structural revision.",
-  "Reduced message back-and-forth through a structured brief format.",
-  "A discussion centered on intended outcome and scope before secondary details.",
+  "An initial determination of the most appropriate execution path based on current state: website, landing page, or structural revision.",
+  "Reduced message back-and-forth through an intake form covering project type, primary objective, language scope, and baseline operating requirements.",
+  "A discussion centered on intended outcome, execution scope, and launch timing before secondary detail.",
 ];
 
 const nextSteps = [
-  "I review the idea, project type, and the main business goal.",
-  "I help define whether a full site, landing page, or structural improvement is the right path.",
-  "We move from there into a clearer scope and a practical next execution step.",
+  "I review the idea, current state, and the primary objective of the project: direct conversion, business presence, or a campaign-led path.",
+  "I define the right execution model according to content scope, language needs, and launch constraints.",
+  "We move from there to an initial estimate and a practical next execution step.",
 ];
 
 type PageProps = { params: Promise<{ locale: string }>; };
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: "Contact | MUAZ TECH",
-    description: "The contact page for receiving project inquiries through an initial brief that defines the core requirements before detailed discussion.",
+    description: "A project intake page for defining current state, primary objective, and scope before the detailed technical discussion.",
     alternates: {
       canonical: "/en/contact",
       languages: {
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       title: "Contact | MUAZ TECH",
-      description: "Receive project inquiries through an initial brief that helps define scope before technical discussion.",
+      description: "Receive project inquiries through an initial intake that defines scope, objective, and the right execution path early.",
       url: `${siteUrl}/en/contact`,
       type: "website",
     },
@@ -66,7 +66,7 @@ export default async function EnglishContactPage({ params }: PageProps) {
       locale="en"
       eyebrow="CONTACT"
       title="Project inquiries and technical contact"
-      description="This page is dedicated to receiving initial project requests through a brief form that helps define technical scope and baseline requirements before detailed discussion."
+      description="This page is dedicated to receiving initial project requests through a short intake form that captures current state, primary objective, and baseline requirements before detailed discussion."
       currentLabel="Contact"
       alternateHref="/contact"
       alternateLabel="العربية"
@@ -77,7 +77,7 @@ export default async function EnglishContactPage({ params }: PageProps) {
         { label: "FAQ", href: "/en/faq" },
         { label: "Contact", href: "/en/contact" },
       ]}
-      primaryAction={{ label: "Submit the project brief", href: "/en/contact#project-brief" }}
+      primaryAction={{ label: "Submit project request", href: "/en/contact#project-brief" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 md:grid-cols-3">
@@ -97,7 +97,7 @@ export default async function EnglishContactPage({ params }: PageProps) {
           <div className="space-y-4">
             <div className="rounded-[1.9rem] border border-amber-200/20 bg-gradient-to-br from-amber-200/14 to-white/5 p-5 backdrop-blur-xl sm:p-6">
               <p className="mb-2 font-mono text-xs tracking-[0.3em] text-amber-200/70">CLOSING PATH</p>
-              <h3 className="text-xl font-semibold text-white">What follows the submission of the project brief?</h3>
+              <h3 className="text-xl font-semibold text-white">What follows the submission of the project request?</h3>
               <div className="mt-4 space-y-3">
                 {nextSteps.map((item, index) => (
                   <div key={item} className="flex items-start gap-3 rounded-[1.3rem] border border-white/10 bg-slate-950/36 px-4 py-4">
@@ -112,9 +112,9 @@ export default async function EnglishContactPage({ params }: PageProps) {
 
             <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl sm:p-6">
               <p className="mb-2 font-mono text-xs tracking-[0.3em] text-amber-200/70">ONE CHANNEL</p>
-              <h3 className="text-xl font-semibold text-white">The project brief is the starting point on this page</h3>
+              <h3 className="text-xl font-semibold text-white">The intake form is the starting point on this page</h3>
               <p className="mt-3 text-sm leading-7 text-white/63">
-                Once the form is completed, WhatsApp opens with a structured initial draft. For that reason, the page avoids distributing the first step across multiple competing contact channels.
+                Once the form is completed, WhatsApp opens with a structured initial draft. For that reason, the page avoids distributing the intake step across multiple competing channels.
               </p>
             </div>
           </div>

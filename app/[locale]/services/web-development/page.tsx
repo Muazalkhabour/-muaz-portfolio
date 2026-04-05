@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: "Professional Web Development | MUAZ TECH",
-    description: "A service page covering professional website development with emphasis on presentation clarity, identity, performance, and access to the intended action.",
+    description: "A professional web-development service for building a clearer business presence, scalable structure, and a cleaner path to the intended action.",
     alternates: {
       canonical: "/en/services/web-development",
       languages: {
@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       title: "Professional Web Development | MUAZ TECH",
-      description: "A detailed service page explaining the website-development approach in terms of structure, interface, identity, and performance.",
+      description: "A detailed service page showing how a business website is built from objective, structure, and content through launch-ready execution.",
       url: `${siteUrl}/en/services/web-development`,
       type: "website",
     },
@@ -118,7 +118,7 @@ export default async function EnglishWebDevelopmentPage({ params }: PageProps) {
         { label: "FAQ", href: "/en/faq" },
         { label: "Contact", href: "/en/contact" },
       ]}
-      primaryAction={{ label: "Submit a brief for this service", href: "#project-brief" }}
+      primaryAction={{ label: "Submit request for this service", href: "#project-brief" }}
     >
       <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
         <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">

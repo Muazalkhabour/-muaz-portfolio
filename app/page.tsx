@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import BrandMark from "@/components/brand-mark";
 import HeroPortrait from "@/components/hero-portrait";
+import MobileHeaderNav from "@/components/mobile-header-nav";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 import SocialLinks from "@/components/social-links";
 import { projectShowcase, servicePaths } from "@/lib/site-content";
@@ -35,30 +36,30 @@ function HeroSceneFallback({ className = "" }: { className?: string }) {
 }
 
 const highlights = [
-  ["تحديد المسار من البداية", "يتم في المرحلة الأولى تحديد ما إذا كان المشروع يحتاج موقعًا كاملًا أو صفحة هبوط أو معالجة بنيوية أوسع."],
-  ["تنفيذ يستند إلى وظيفة واضحة", "ترتبط المعالجة التقنية والبصرية هنا بوضوح الرسالة ومسار الاستخدام، لا بالمظهر وحده."],
-  ["بنية ثنائية اللغة متماسكة", "تُبنى النسختان العربية والإنجليزية ضمن هيكل موحد يحافظ على الاتساق في المحتوى والهوية."],
+  ["تحديد نموذج التنفيذ مبكرًا", "تُحسم منذ البداية طبيعة المخرج: موقع كامل، صفحة هبوط، أو مراجعة بنيوية أوسع بحسب الحاجة الفعلية."],
+  ["معالجة تقودها وظيفة الواجهة", "تُبنى القرارات التقنية والبصرية هنا وفق وضوح الرسالة ومسار الاستخدام والإجراء المطلوب."],
+  ["بنية ثنائية اللغة ضمن نظام واحد", "تُطوَّر النسختان العربية والإنجليزية داخل هيكل موحد يحافظ على الاتساق في المحتوى والهوية ومسار الاستخدام."],
 ];
 
 const credential = {
   title: "خلفية أكاديمية من Medipol University",
   description:
-    "تدعم هذه الخلفية الأكاديمية الخبرة العملية بأساس معرفي يساعد على اتخاذ قرارات أكثر دقة في تطوير الواجهات وبناء المنتجات الرقمية.",
+    "تدعم هذه الخلفية الأكاديمية الخبرة العملية بأساس معرفي يساعد على اتخاذ قرارات أكثر دقة في هندسة الواجهات وبناء المنتجات الرقمية.",
   badge: "Academic Foundation",
 };
 
 const trustSignals = [
   {
     label: "أسلوب التنفيذ",
-    value: "من جمع المتطلبات الأولية إلى واجهة جاهزة للنشر ضمن مسار عمل منظم.",
+    value: "من قراءة المتطلبات الأولية إلى واجهة جاهزة للنشر ضمن مسار عمل واضح وقابل للمراجعة.",
   },
   {
     label: "تركيز المشروع",
-    value: "مواقع مؤسسية، صفحات هبوط، وواجهات رقمية ذات بنية منضبطة.",
+    value: "مواقع مؤسسية، صفحات هبوط، وواجهات رقمية تُبنى على بنية واضحة لا على الزخرفة وحدها.",
   },
   {
     label: "معيار القرار",
-    value: "مدى قدرة الموقع على توضيح القيمة وتوجيه المستخدم إلى الإجراء المقصود.",
+    value: "مدى قدرة الموقع على توضيح القيمة وتوجيه المستخدم إلى الإجراء الصحيح ضمن مسار مقصود.",
   },
 ];
 
@@ -69,7 +70,17 @@ const footerLinks = [
   { label: "الرئيسية", href: "#home" },
   { label: "الخدمات", href: "/services" },
   { label: "التقنيات", href: "/technologies" },
+  { label: "المنهج", href: "/approach" },
   { label: "المشاريع", href: "/projects" },
+  { label: "تواصل", href: "/contact" },
+];
+
+const mobileNavLinks = [
+  { label: "الخدمات", href: "/services" },
+  { label: "التقنيات", href: "/technologies" },
+  { label: "المنهج", href: "/approach" },
+  { label: "المشاريع", href: "/projects" },
+  { label: "الأسئلة", href: "/faq" },
   { label: "تواصل", href: "/contact" },
 ];
 
@@ -213,7 +224,9 @@ export default function Home() {
           <nav className="hidden items-center gap-4 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white/70 backdrop-blur md:flex lg:gap-6 lg:px-5 lg:py-3 lg:text-sm">
             <Link href="/services" className="transition hover:text-amber-200">الخدمات</Link>
             <Link href="/technologies" className="transition hover:text-amber-200">التقنيات</Link>
+            <Link href="/approach" className="transition hover:text-amber-200">المنهج</Link>
             <Link href="/projects" className="transition hover:text-amber-200">المشاريع</Link>
+            <Link href="/faq" className="transition hover:text-amber-200">الأسئلة</Link>
             <Link href="/contact" className="transition hover:text-amber-200">تواصل</Link>
           </nav>
           <Link
@@ -228,32 +241,7 @@ export default function Home() {
       </header>
 
       <div className="mx-auto w-full max-w-7xl px-4 pb-2 sm:px-6 md:hidden">
-        <nav className="mx-auto flex w-full items-center justify-center gap-2 overflow-x-auto rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-2 py-2 text-xs text-white/78 shadow-[0_16px_40px_rgba(2,6,23,0.2)] backdrop-blur [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <Link
-            href="/services"
-            className="shrink-0 rounded-full border border-transparent bg-white/[0.04] px-4 py-2 transition hover:border-amber-200/25 hover:text-amber-100"
-          >
-            الخدمات
-          </Link>
-          <Link
-            href="/technologies"
-            className="shrink-0 rounded-full border border-transparent bg-white/[0.04] px-4 py-2 transition hover:border-amber-200/25 hover:text-amber-100"
-          >
-            التقنيات
-          </Link>
-          <Link
-            href="/projects"
-            className="shrink-0 rounded-full border border-transparent bg-white/[0.04] px-4 py-2 transition hover:border-amber-200/25 hover:text-amber-100"
-          >
-            المشاريع
-          </Link>
-          <Link
-            href="/contact"
-            className="shrink-0 rounded-full border border-transparent bg-white/[0.04] px-4 py-2 transition hover:border-amber-200/25 hover:text-amber-100"
-          >
-            تواصل
-          </Link>
-        </nav>
+        <MobileHeaderNav links={mobileNavLinks} direction="rtl" />
       </div>
 
       <section
@@ -289,10 +277,10 @@ export default function Home() {
               <span className="block">
                 أنا <span className="text-amber-200">معاذ الشمطي</span> | <span className="text-amber-200">M</span>UAZ <span className="text-amber-200">T</span>ECH
               </span>
-              <span className="block leading-[1.68] sm:leading-[1.72] lg:leading-[1.68]">أطوّر مواقع وصفحات هبوط تُحسن وضوح العرض وتدعم مسار الاستخدام واتخاذ القرار.</span>
+              <span className="block leading-[1.68] sm:leading-[1.72] lg:leading-[1.68]">أبني بنية رقمية متكاملة، أوحّد فيها هندسة الواجهة مع منطق الرسالة والتسويق الرقمي.</span>
             </h1>
             <p className="max-w-2xl text-[15px] leading-7 text-white/70 sm:text-lg sm:leading-8 lg:text-xl">
-              أجمع بين تطوير الويب وبنية المحتوى وتجربة الاستخدام بحيث لا يقتصر الموقع على الحضور البصري، بل يؤدي وظيفة اتصال وعرض أكثر دقة وفاعلية.
+              أجمع بين تطوير الويب وبنية المحتوى وتجربة الاستخدام بحيث يعمل الموقع بوصفه طبقة عرض واتصال وقرار، لا مجرد حضور بصري معزول.
             </p>
           </div>
 
@@ -306,12 +294,12 @@ export default function Home() {
           </div>
 
           <p className="text-sm leading-7 text-white/55">
-            يهدف التواصل الأولي إلى تحديد الإطار الأنسب للمشروع: موقع كامل، صفحة هبوط، أو مراجعة بنيوية للعرض الحالي قبل التنفيذ.
+            يهدف التواصل الأولي إلى تحديد نموذج التنفيذ الأنسب: موقع كامل، صفحة هبوط، أو مراجعة بنيوية للعرض الحالي قبل بدء المعالجة.
           </p>
 
           <div className="mx-auto grid max-w-md justify-items-center gap-4 sm:max-w-none sm:grid-cols-2 sm:justify-items-stretch xl:grid-cols-3">
             {highlights.map(([title, text]) => (
-              <div key={title} className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur-xl sm:max-w-none sm:text-start">
+              <div key={title} className="w-full max-w-md rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(15,23,42,0.46))] p-5 text-center shadow-[0_14px_40px_rgba(2,6,23,0.16)] backdrop-blur-xl transition hover:border-amber-200/20 sm:max-w-none sm:text-start">
                 <p className="mb-2 text-sm font-semibold text-white">{title}</p>
                 <p className="text-sm leading-6 text-white/60">{text}</p>
               </div>
@@ -338,11 +326,11 @@ export default function Home() {
       </section>
 
       <motion.section {...fadeUp} className="mx-auto w-full max-w-7xl px-4 pb-6 pt-6 sm:px-6 sm:pt-8 lg:px-10">
-        <div className="mb-6 max-w-3xl rounded-[1.75rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03)_34%,rgba(2,6,23,0.4)_100%)] p-5 sm:rounded-none sm:border-0 sm:bg-none sm:p-0">
+        <div className="mb-6 max-w-3xl rounded-[1.75rem] border border-cyan-200/12 bg-[linear-gradient(180deg,rgba(56,189,248,0.08),rgba(255,255,255,0.03)_34%,rgba(2,6,23,0.46)_100%)] p-5 shadow-[0_18px_45px_rgba(8,47,73,0.16)] sm:rounded-none sm:border-0 sm:bg-none sm:p-0 sm:shadow-none">
           <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">SERVICES</p>
           <h2 className="mb-4 text-2xl font-semibold text-white sm:text-3xl">مسارات التنفيذ الأساسية</h2>
           <p className="max-w-3xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            يقدّم هذا القسم تصنيفًا أوليًا لمسارات التنفيذ المعتمدة، بينما تتضمن صفحة الخدمات تفصيل النطاق، متطلبات كل مسار، وسياقات الاستخدام المناسبة له.
+            يقدّم هذا القسم قراءة أولية لمسارات التنفيذ المعتمدة، بينما تتضمن صفحة الخدمات تفصيل النطاق، متطلبات كل مسار، وحالات ملاءمته الفعلية.
           </p>
         </div>
 
@@ -351,7 +339,7 @@ export default function Home() {
             <Link
               key={service.title}
               href={service.href}
-              className="group w-full rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-5 text-center shadow-[0_18px_50px_rgba(2,6,23,0.16)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-amber-200/20 sm:text-start"
+              className="group w-full rounded-[1.8rem] border border-cyan-200/12 bg-[linear-gradient(180deg,rgba(56,189,248,0.08),rgba(255,255,255,0.02)_24%,rgba(15,23,42,0.62)_100%)] p-5 text-center shadow-[0_18px_50px_rgba(2,6,23,0.16)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-200/24 sm:text-start"
             >
               <p className="mb-3 text-lg font-semibold text-white transition group-hover:text-amber-100">{service.title}</p>
               <p className="text-sm leading-7 text-white/62">{service.description}</p>
@@ -370,11 +358,11 @@ export default function Home() {
       </motion.section>
 
       <motion.section id="projects" {...fadeUp} className="mx-auto w-full max-w-7xl px-4 pb-16 pt-6 sm:px-6 sm:pt-8 lg:px-10">
-        <div className="mb-8 max-w-3xl rounded-[1.75rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03)_34%,rgba(2,6,23,0.4)_100%)] p-5 sm:rounded-none sm:border-0 sm:bg-none sm:p-0">
+        <div className="mb-8 max-w-3xl rounded-[1.75rem] border border-amber-200/14 bg-[linear-gradient(180deg,rgba(251,191,36,0.08),rgba(255,255,255,0.03)_34%,rgba(2,6,23,0.44)_100%)] p-5 shadow-[0_18px_45px_rgba(77,52,10,0.16)] sm:rounded-none sm:border-0 sm:bg-none sm:p-0 sm:shadow-none">
           <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">PROJECT PREVIEW</p>
           <h2 className="mb-4 text-2xl font-semibold text-white sm:text-3xl">دراسة حالة مختارة</h2>
           <p className="max-w-3xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            يعرض هذا القسم نموذجًا مختصرًا من الأعمال المنفذة لبيان بنية المعالجة، منطق الواجهة، واتجاه التنفيذ، بينما تبقى بقية الحالات ضمن صفحة المشاريع.
+            يعرض هذا القسم حالة واحدة بصياغة مختصرة توضح منطق المعالجة، بنية الواجهة، واتجاه القرار التنفيذي، بينما تبقى القراءة الكاملة ضمن صفحة المشاريع.
           </p>
         </div>
         <div className="grid auto-rows-fr gap-5 lg:max-w-4xl">
@@ -499,6 +487,12 @@ export default function Home() {
                 </span>
               </div>
 
+              <div className="mb-4">
+                <span className="inline-flex rounded-full border border-amber-200/16 bg-amber-200/10 px-3 py-1.5 text-[11px] font-medium text-amber-100">
+                  الهدف: {project.objective}
+                </span>
+              </div>
+
               <h3 className="mb-3 text-xl font-semibold text-white sm:text-2xl">{project.title}</h3>
               <div className="mb-4 flex flex-wrap gap-2">
                 {project.stack.map((item) => (
@@ -548,7 +542,7 @@ export default function Home() {
       </motion.section>
 
       <motion.section {...fadeUp} className="mx-auto w-full max-w-7xl px-4 py-3 sm:px-6 lg:px-10">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl sm:p-8">
+        <div className="rounded-[2rem] border border-emerald-200/12 bg-[linear-gradient(180deg,rgba(16,185,129,0.08),rgba(255,255,255,0.03)_24%,rgba(15,23,42,0.72)_100%)] p-5 shadow-[0_18px_50px_rgba(2,6,23,0.16)] backdrop-blur-xl sm:p-8">
           <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">CREDENTIALS</p>
@@ -576,18 +570,18 @@ export default function Home() {
       </motion.section>
 
       <motion.section id="contact" {...fadeUp} className="mx-auto w-full max-w-7xl px-4 pb-20 pt-4 sm:px-6 lg:px-10">
-        <div className="rounded-[2rem] border border-amber-200/15 bg-gradient-to-br from-amber-200/10 to-white/5 p-6 backdrop-blur-xl sm:p-10">
+        <div className="rounded-[2rem] border border-rose-200/12 bg-[linear-gradient(180deg,rgba(244,114,182,0.08),rgba(255,255,255,0.03)_22%,rgba(15,23,42,0.76)_100%)] p-6 shadow-[0_22px_70px_rgba(2,6,23,0.18)] backdrop-blur-xl sm:p-10">
           <p className="mb-2 font-mono text-sm tracking-[0.35em] text-amber-200/70">CONTACT</p>
           <h2 className="mb-4 max-w-3xl text-2xl font-semibold text-white sm:text-3xl">إدخال طلبات التنفيذ</h2>
           <p className="max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-            تمثل صفحة التواصل نقطة الإدخال الرسمية لطلبات التنفيذ، حيث يُستخدم نموذج brief أولي لتحديد نطاق المشروع، متطلبات التشغيل، والمعطيات الأساسية قبل الانتقال إلى التقييم التقني.
+            تمثل صفحة التواصل نقطة الإدخال الرسمية لطلبات التنفيذ، حيث يُستخدم نموذج منظم لتحديد نطاق المشروع، الهدف الأساسي، ومتطلبات التشغيل قبل الانتقال إلى التقييم التقني.
           </p>
 
           <div className="mt-8 rounded-[1.85rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(15,23,42,0.72))] p-5 shadow-[0_22px_70px_rgba(2,6,23,0.18)] backdrop-blur-xl sm:p-8">
             <p className="mb-2 font-mono text-xs tracking-[0.3em] text-amber-200/70">PROJECT INTAKE</p>
             <h3 className="text-xl font-semibold text-white sm:text-2xl">مكونات صفحة التواصل</h3>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/68 sm:text-base">
-              تتضمن الصفحة نموذج brief منظّمًا لجمع المتطلبات الأساسية، ثم تهيئة طلب المشروع ضمن صياغة أولية قابلة للمراجعة قبل بدء النقاش التنفيذي.
+              تتضمن الصفحة نموذج إدخال منظّمًا لجمع المتطلبات الأساسية، ثم تهيئة طلب المشروع ضمن صياغة أولية قابلة للمراجعة قبل بدء النقاش التنفيذي.
             </p>
             <div className="mt-6">
               <Link

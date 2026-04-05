@@ -18,6 +18,7 @@ export type ProjectCaseStudy = {
   summary: string;
   homeSummary?: string;
   tag: string;
+  objective: string;
   stack: string[];
   href?: string;
   primaryCta: string;
@@ -165,6 +166,7 @@ export const projectShowcase: Record<ContentLocale, ProjectCaseStudy[]> = {
       homeSummary:
         "منصة عقارية متكاملة تجمع البحث والعقود والإدارة ضمن تجربة أوضح وأكثر احترافية.",
       tag: "Real Estate SaaS",
+      objective: "تشغيل داخلي + حضور مهني",
       stack: ["Property Search", "Contracts", "Admin Dashboard"],
       href: "https://aqari-saas.vercel.app/",
       primaryCta: "شاهد المشروع مباشرًا",
@@ -190,6 +192,7 @@ export const projectShowcase: Record<ContentLocale, ProjectCaseStudy[]> = {
         "واجهة بيانات لحظية تركز على إبراز المؤشرات المهمة بسرعة وتقديم قراءة واضحة للفريق أو الإدارة دون ازدحام بصري.",
       homeSummary: "لوحة بيانات تبرز المؤشرات المباشرة بسرعة وتسهّل اتخاذ القرار دون تشويش.",
       tag: "Dashboard",
+      objective: "تشغيل داخلي وقراءة مؤشرات",
       stack: ["React", "Realtime Data", "Charts"],
       primaryCta: "استعرض هذا النمط",
       secondaryCta: "ناقش الفكرة",
@@ -210,6 +213,7 @@ export const projectShowcase: Record<ContentLocale, ProjectCaseStudy[]> = {
         "منتج رقمي يجمع الأتمتة وأدوات الذكاء الاصطناعي ضمن واجهة أوضح، بحيث يفهم المستخدم القيمة بسرعة ويكمل عمله بسلاسة.",
       homeSummary: "منصة تجمع الأتمتة والذكاء الاصطناعي ضمن تدفق أوضح وأسهل في الفهم والاستخدام.",
       tag: "AI Tools",
+      objective: "تبنّي المنتج ووضوح القيمة",
       stack: ["Next.js", "AI Workflows", "Automation"],
       primaryCta: "ناقش فكرتك",
       secondaryCta: "تواصل الآن",
@@ -233,6 +237,7 @@ export const projectShowcase: Record<ContentLocale, ProjectCaseStudy[]> = {
       homeSummary:
         "A real-estate platform that brings search, contracts, and management into one clearer and more professional flow.",
       tag: "Real Estate SaaS",
+      objective: "Internal operations + professional presence",
       stack: ["Property Search", "Contracts", "Admin Dashboard"],
       href: "https://aqari-saas.vercel.app/",
       primaryCta: "View live project",
@@ -258,6 +263,7 @@ export const projectShowcase: Record<ContentLocale, ProjectCaseStudy[]> = {
         "A real-time data interface focused on surfacing the right metrics quickly and making operational reading clearer for teams and decision-makers.",
       homeSummary: "A real-time dashboard concept that surfaces the right signals quickly and keeps decision-making clearer.",
       tag: "Dashboard",
+      objective: "Internal operations and metric clarity",
       stack: ["React", "Realtime Data", "Charts"],
       primaryCta: "Explore the concept",
       secondaryCta: "Discuss a similar build",
@@ -278,6 +284,7 @@ export const projectShowcase: Record<ContentLocale, ProjectCaseStudy[]> = {
         "A digital product concept that brings automation and AI tools into a clearer workflow, so users understand the value faster and move through tasks more smoothly.",
       homeSummary: "A workflow product that combines automation and AI tools in a clearer and easier-to-adopt experience.",
       tag: "AI Tools",
+      objective: "Product adoption and value clarity",
       stack: ["Next.js", "AI Workflows", "Automation"],
       primaryCta: "Discuss the idea",
       secondaryCta: "Start a conversation",
